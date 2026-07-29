@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-sample-app-demo
+  labels:
+    app: python-sample-app-demo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: python-sample-app-demo
+  template:
+    metadata:
+      labels:
+        app: python-sample-app-demo
+    spec:
+      containers:
+      - name: pytho-app
+        image: python-sample-app-demo:v1
+		imagePullPolicy: Never
+        ports:
+        - containerPort: 8000
