@@ -6,7 +6,7 @@ spec:
   type: NodePort
   # LoadBalancer when exposing to outside
   selector:
-    app.kubernetes.io/name: python-sample-app-demo
+    app: python-sample-app-demo
   ports:
     - port: 80
       targetPort: 8000
