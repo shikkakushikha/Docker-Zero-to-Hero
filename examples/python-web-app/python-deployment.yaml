@@ -18,12 +18,20 @@ spec:
       - name: pytho-app
         image: python-sample-app-demo:v1
         imagePullPolicy: Never
+        volumeMounts:   #then mount the volume that is nothong but reading it in pod level
+         - name: db-connection
+           mountPath: /opt
+        
         # Read value from ConfigMap
-        env:
-        - name: DB-PORT
-          valueFrom:
-           configMapKeyRef:
-            name: python-config # ConfigMap name
-            key: db-port        # Key inside ConfigMap
+#        env:
+#        - name: DB-PORT
+#          valueFrom:
+#           configMapKeyRef:
+#            name: python-config # ConfigMap name
+ #           key: db-port        # Key inside ConfigMap
         ports:
         - containerPort: 8000
+      volumes:  #create volume/storage first
+        - name: db-connection
+          configMap:
+           name: python-config
