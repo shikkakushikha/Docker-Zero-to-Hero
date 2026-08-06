@@ -18,5 +18,12 @@ spec:
       - name: pytho-app
         image: python-sample-app-demo:v1
         imagePullPolicy: Never
+        # Read value from ConfigMap
+        env:
+        - name: DB-PORT
+          valueFrom:
+           configMapKeyRef:
+            name: python-config # ConfigMap name
+            key: db-port        # Key inside ConfigMap
         ports:
         - containerPort: 8000
