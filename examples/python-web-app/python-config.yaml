@@ -3,4 +3,4 @@ kind: ConfigMap
 metadata:
   name: python-config
 data:
-  db_port: "3306"
+  db-port: "3306"
